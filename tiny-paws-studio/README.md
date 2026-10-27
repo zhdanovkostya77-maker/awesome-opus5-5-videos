@@ -1,15 +1,20 @@
-# Tiny Paws Animation Studio — Episode 1
+# Tiny Paws Animation Studio
 
-Original 20-second vertical 9:16 animated bunny scene, implemented with HTML Canvas. No third-party images, audio, characters, or paid API required.
+Two free prototypes for original children's short-form animation.
 
-## Preview
-Open `index.html` in a modern browser. Tap **Play / Restart**.
+## 1. Browser preview
+Open `index.html` to see the animated bunny. The **Record WebM** button needs a browser with MediaRecorder support; Safari compatibility varies. Browser recording does not include narration.
 
-## Export
-Use **Record WebM** on desktop Chrome or another browser supporting Canvas capture and MediaRecorder. Recording is silent; English title cards are included. For YouTube Shorts, convert WebM to MP4 using FFmpeg:
+## 2. Narrated MP4 (new)
+`render_short.py` produces a 15-second vertical 360×640 MP4 with original 2D bunny animation, English text, and synthesized US-English narration. It requires Python 3, Pillow, FFmpeg, and eSpeak. On Ubuntu/Debian:
 
 ```bash
-ffmpeg -i tiny-paws-episode-1.webm -c:v libx264 -pix_fmt yuv420p -movflags +faststart tiny-paws-episode-1.mp4
+sudo apt-get install -y ffmpeg espeak python3-pip
+python3 -m pip install Pillow
+python3 render_short.py
 ```
 
-This is a simple 2D animated prototype, not a photorealistic 3D render. iPhone Safari may not support WebM recording. No voiceover has been generated yet. Review YouTube's made-for-kids requirements before publishing.
+The generated `tiny-paws-episode-1.mp4` is saved in the same folder. The voice is robotic; replace it with licensed narration if desired. This is a **2D prototype**, not a photorealistic 3D cartoon. The script has not yet been run in GitHub CI; verify output before publication.
+
+## Content and publishing
+Characters, scenery and dialogue are original code-drawn assets, with no reused TikTok clips. For YouTube, mark content as **made for kids** when applicable. No paid API is required.
